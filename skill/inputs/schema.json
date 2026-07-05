@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WCAG Contrast Audit Inputs",
+  "description": "Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios and generates a professional PDF report from a saved HTML page in one command.",
+  "type": "object",
+  "required": [],
+  "properties": {
+  }
+}

@@ -1,0 +1,22 @@
+name: WCAG Contrast Audit
+id: com.widgetcontextprotocol.wcag-contrast-audit
+uuid: 18a27cc7-932b-433a-9a3b-b29fe866a84e
+version: 1.0.0
+description: Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios and generates a professional PDF report from a saved HTML page in one command.
+author: Anthony Harrison
+authorEmail: anthony@harrisonofthenorth.com
+entry: SKILL.md
+license: MIT
+minimum_runtime: "1.0.0"
+capabilities:
+  - filesystem.read
+  - filesystem.write
+  - process.exec
+homepage: https://openaiskillpackage.com/
+repository: https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT
+tags: [wcag, contrast, audit]
+type: analytical
+changelog:
+  - version: 1.0.0
+    changes:
+      - Initial release
