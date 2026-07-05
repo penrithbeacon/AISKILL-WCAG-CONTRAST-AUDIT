@@ -1,0 +1,10 @@
+fg,bg,label
+#e2e8f0,#0f1117,Body text on dark background
+#8899b3,#0f1117,Muted text on dark background
+#10b981,#0f1117,Primary (emerald) on dark background
+#6ee7b7,#0f1117,Link colour on dark background
+#ffffff,#10b981,White text on primary button
+#0f1117,#10b981,Dark text on primary button
+#e2e8f0,#161b27,Body text on surface
+#8899b3,#161b27,Muted text on surface
+#10b981,#161b27,Primary on surface

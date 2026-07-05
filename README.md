@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Version | `1.0.0` |
+| Version | `1.1.4` |
 | License | `MIT` |
 | Author | Anthony Harrison |
 | Homepage | https://openaiskillpackage.com/ |
@@ -14,9 +14,21 @@
 
 ## What This Skill Does
 
-[Replace this section with a detailed description of what the skill does, when to use it,
-and what problem it solves. Be specific — someone reading this README should understand
-whether this skill is what they need without having to open the .aiskill file.]
+Audits every foreground/background colour pair on a web page against WCAG 2.1/2.2 contrast
+ratio requirements — AA (4.5:1 normal text, 3.0:1 large text) and AAA (7.0:1 / 4.5:1) — and
+produces a professional, deterministic report.
+
+Give the agent a saved copy of a page (browser "Save As → Webpage, Complete"), and one
+command extracts the site's linked CSS, identifies explicit and implicit colour pairs,
+runs the audit, and writes both an HTML report (the authoritative output) and a PDF
+(a derived, best-effort artefact — rendering can vary slightly between WeasyPrint,
+wkhtmltopdf, and Puppeteer). Minified framework CSS (Bootstrap, Tailwind, etc.) is excluded
+by default, since auditing every colour a framework defines — most of which never appear
+on the page — produces thousands of phantom failures rather than a usable result.
+
+Use this when you need to demonstrate, document, or fix WCAG contrast compliance for a real
+site — including EN 301 549 / EAA (European Accessibility Act) audits, which reference the
+same SC 1.4.3 and SC 1.4.6 success criteria this skill checks against.
 
 ---
 
@@ -25,18 +37,19 @@ whether this skill is what they need without having to open the .aiskill file.]
 Before using this skill, ensure the following are available in the AI agent's environment:
 
 - Python 3.8 or later
-- [Add any pip packages, e.g. `pip install pyyaml weasyprint`]
-- [Add any system tools, e.g. `git`, `gh` CLI]
+- A PDF renderer (optional but recommended): `pip install weasyprint` (preferred), or
+  `wkhtmltopdf` via your OS package manager, or `npm install puppeteer`. Without one,
+  the HTML report is still produced and the PDF step is skipped with install instructions.
 
 ---
 
 ## Quick Start
 
-1. Download `WCAG-CONTRAST-AUDIT-1.0.0.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT/releases) page
+1. Download `WCAG-CONTRAST-AUDIT-1.1.4.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT/releases) page
 2. Give your AI agent the following prompt:
 
 ```
-Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-1.0.0.aiskill,
+Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-1.1.4.aiskill,
 [describe what you want the skill to do, e.g. 'audit the contrast of /path/to/saved-page.html']
 ```
 
@@ -45,20 +58,23 @@ Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-1.0.0.aiskill,
 ## Skill Archive Contents
 
 ```
-WCAG-CONTRAST-AUDIT-1.0.0.aiskill  (ZIP archive)
+WCAG-CONTRAST-AUDIT-1.1.4.aiskill  (ZIP archive)
 ├── manifest.yaml          # identity & metadata
 ├── SKILL.md               # AI entry point — execution instructions
 ├── README.md              # this file (skill-level)
 ├── CHANGELOG.md           # version history
 ├── checksums.yaml         # SHA-256 integrity hashes
 ├── assets/
-│   ├── scripts/           # execution scripts
-│   │   └── [script].py
-│   ├── templates/         # content templates (if any)
-│   └── tests/             # unit tests
-│       └── test_[script].py
+│   ├── scripts/
+│   │   ├── generate_report.py   # one-command end-to-end report generator
+│   │   └── wcag_contrast.py     # contrast calculator (manual/CSV audit path)
+│   ├── templates/
+│   │   └── report-template.html # portable HTML report template
+│   └── tests/
+│       └── test_wcag_contrast.py
 └── inputs/
-    └── schema.json        # input schema
+    ├── schema.json         # input schema
+    └── example-pairs.csv   # example fg,bg,label CSV for the manual audit path
 ```
 
 ---

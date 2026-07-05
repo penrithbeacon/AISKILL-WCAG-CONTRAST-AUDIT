@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill">
+<title>WCAG Contrast Audit &mdash; <<<SITE_URL>>></title>
+<style>
+/*
+  Report template — WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill
+  Portable CSS: no color-mix(), no gradients, no @page margin boxes.
+  Compatible with WeasyPrint, wkhtmltopdf, and Puppeteer/headless Chrome.
+*/
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 22mm 18mm;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  color: #1f2937;
+  line-height: 1.55;
+}
+
+/* Browser-only margins — WeasyPrint ignores @media screen */
+@media screen {
+  body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 40px;
+  }
+}
+
+/* ── Cover ─────────────────────────────────────── */
+
+.cover {
+  page-break-after: always;
+  padding-top: 28mm;
+}
+
+.cover-rule-top {
+  height: 5px;
+  background: #1d4ed8;
+  margin-bottom: 12mm;
+}
+
+.cover-rule-bottom {
+  height: 2px;
+  background: #e5e7eb;
+  margin-top: 10mm;
+  margin-bottom: 8mm;
+}
+
+.cover h1 {
+  font-size: 28pt;
+  font-weight: bold;
+  color: #111827;
+  line-height: 1.15;
+  margin-bottom: 3mm;
+}
+
+.cover h1 .accent {
+  color: #1d4ed8;
+}
+
+.cover .subtitle {
+  font-size: 14pt;
+  color: #4b5563;
+  margin-bottom: 0;
+}
+
+/* Cover meta — two-column label/value rows */
+.cover-meta {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8mm;
+}
+
+.cover-meta tr {
+  border-bottom: 0.5pt solid #e5e7eb;
+}
+
+.cover-meta td {
+  padding: 2mm 0;
+  vertical-align: middle;
+}
+
+.cover-meta .meta-label-cell {
+  width: 32mm;
+}
+
+.meta-label {
+  display: block;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.meta-value {
+  display: block;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.cover-badge {
+  margin-top: 10mm;
+  padding: 3.5mm 5mm;
+  background: #fef3c7;
+  border: 1pt solid #f59e0b;
+  border-left: 4pt solid #f59e0b;
+  font-size: 8.5pt;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+.cover-badge strong {
+  color: #78350f;
+}
+
+/* ── Body headings ──────────────────────────────── */
+
+h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #1d4ed8;
+  border-bottom: 2pt solid #dbeafe;
+  padding-bottom: 2mm;
+  margin-top: 9mm;
+  margin-bottom: 4mm;
+}
+
+h3 {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #374151;
+  margin-top: 5mm;
+  margin-bottom: 2mm;
+}
+
+h4 {
+  font-size: 9.5pt;
+  font-weight: bold;
+  color: #991b1b;
+  margin-bottom: 1.5mm;
+}
+
+p {
+  margin-bottom: 3mm;
+}
+
+ul {
+  margin: 2mm 0 3mm 6mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+/* ── Summary grid — table layout ───────────────── */
+
+.summary-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5mm 0;
+}
+
+.summary-grid td {
+  width: 25%;
+  padding: 5mm 4mm;
+  text-align: center;
+}
+
+/* narrow spacer columns between boxes */
+.summary-grid .spacer {
+  width: 3mm;
+  padding: 0;
+  background: none;
+}
+
+.summary-num {
+  display: block;
+  font-size: 26pt;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.summary-lbl {
+  display: block;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 1.5mm;
+}
+
+.box-total { background: #f3f4f6; color: #374151; }
+.box-pass  { background: #d1fae5; color: #065f46; }
+.box-fail  { background: #fee2e2; color: #991b1b; }
+.box-warn  { background: #fef3c7; color: #92400e; }
+
+/* ── Results table ──────────────────────────────── */
+
+table.results {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4mm 0;
+  font-size: 8.5pt;
+  table-layout: fixed;
+}
+
+table.results thead tr {
+  background: #1e3a8a;
+  color: #ffffff;
+}
+
+table.results thead th {
+  padding: 3mm 3mm;
+  text-align: left;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table.results tbody tr {
+  background: #ffffff;
+}
+
+table.results tbody tr.alt {
+  background: #f9fafb;
+}
+
+table.results tbody td {
+  padding: 2.5mm 3mm;
+  border-bottom: 1pt solid #e5e7eb;
+  vertical-align: middle;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+table.results tbody tr.fail-row td {
+  background: #fff5f5;
+}
+
+.ratio {
+  font-weight: bold;
+}
+
+.pass {
+  color: #059669;
+  font-weight: bold;
+}
+
+.fail-text {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* ── Fail cards ─────────────────────────────────── */
+
+.fail-card {
+  border-left: 4pt solid #dc2626;
+  background: #fff5f5;
+  padding: 3.5mm 5mm;
+  margin: 3.5mm 0;
+  page-break-inside: avoid;
+}
+
+.fix-box {
+  margin-top: 2mm;
+  padding: 2.5mm 3.5mm;
+  background: #ffffff;
+  border: 1pt solid #fecaca;
+  font-size: 8.5pt;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.fix-label {
+  display: block;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #9ca3af;
+  margin-bottom: 1mm;
+  font-weight: bold;
+}
+
+/* ── Inline code ────────────────────────────────── */
+
+code {
+  font-family: Courier New, Courier, monospace;
+  font-size: 8pt;
+  background: #f3f4f6;
+  padding: 0.5mm 1.5mm;
+  color: #1f2937;
+}
+
+/* ── Method steps — table layout ───────────────── */
+
+.method-steps {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0;
+}
+
+.method-steps td {
+  padding: 2mm 3mm 2mm 0;
+  vertical-align: top;
+  border: none;
+}
+
+.step-num-cell {
+  width: 8mm;
+}
+
+.step-num {
+  display: block;
+  width: 6.5mm;
+  height: 6.5mm;
+  background: #1d4ed8;
+  color: #ffffff;
+  font-size: 7.5pt;
+  font-weight: bold;
+  text-align: center;
+  line-height: 6.5mm;
+}
+
+/* ── Skill reference box ────────────────────────── */
+
+.skill-box {
+  border: 1.5pt solid #c7d2fe;
+  padding: 4mm 5mm;
+  background: #eef2ff;
+  margin: 4mm 0;
+}
+
+.skill-box-heading {
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4338ca;
+  margin-bottom: 2mm;
+  font-weight: bold;
+}
+
+.skill-name {
+  font-family: Courier New, Courier, monospace;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #312e81;
+}
+
+.skill-meta {
+  margin-top: 2mm;
+  font-size: 8pt;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.skill-meta-row {
+  display: block;
+  margin-bottom: 1mm;
+}
+
+.skill-availability {
+  margin-top: 3mm;
+  padding-top: 3mm;
+  border-top: 1pt solid #c7d2fe;
+  font-size: 8.5pt;
+  color: #374151;
+  line-height: 1.55;
+}
+
+.skill-availability strong {
+  color: #1d4ed8;
+}
+
+/* ── Scope & Limitations box ────────────────────── */
+
+.scope-box {
+  border: 1.5pt solid #93c5fd;
+  padding: 4mm 5mm;
+  background: #eff6ff;
+  margin: 4mm 0;
+}
+
+.scope-heading {
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 3mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+table.scope-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2mm 0 3mm;
+  font-size: 8.5pt;
+}
+
+table.scope-table th {
+  background: #dbeafe;
+  color: #1e3a8a;
+  padding: 2mm 3mm;
+  text-align: left;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table.scope-table td {
+  padding: 2mm 3mm;
+  border-bottom: 1pt solid #bfdbfe;
+  vertical-align: middle;
+}
+
+table.scope-table tr:last-child td {
+  border-bottom: none;
+}
+
+.scope-audited td { background: #f0fdf4; }
+.scope-excluded td { background: #fffbeb; }
+
+.scope-status-pass {
+  display: inline-block;
+  padding: 0.5mm 2mm;
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 7.5pt;
+  font-weight: bold;
+}
+
+.scope-status-warn {
+  display: inline-block;
+  padding: 0.5mm 2mm;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 7.5pt;
+  font-weight: bold;
+}
+
+.scope-note {
+  font-size: 8.5pt;
+  color: #374151;
+  margin-top: 3mm;
+  line-height: 1.6;
+}
+
+.scope-rerun {
+  display: block;
+  margin-top: 1.5mm;
+  font-size: 8pt;
+  color: #4b5563;
+}
+
+.scope-rerun em {
+  font-style: italic;
+  color: #1e40af;
+}
+
+.scope-accountability {
+  margin-top: 3mm;
+  padding: 2.5mm 3.5mm;
+  background: #ffffff;
+  border: 1pt solid #93c5fd;
+  font-size: 8.5pt;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* ── Compliance box ─────────────────────────────── */
+
+.compliance-box {
+  border: 1.5pt solid #fbbf24;
+  padding: 4mm 5mm;
+  background: #fffbeb;
+  margin: 4mm 0;
+}
+
+.compliance-heading {
+  font-size: 8.5pt;
+  font-weight: bold;
+  color: #92400e;
+  margin-bottom: 2mm;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Report footer ──────────────────────────────── */
+
+.report-footer {
+  margin-top: 12mm;
+  padding-top: 3mm;
+  border-top: 1.5pt solid #e5e7eb;
+}
+
+.report-footer table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-footer td {
+  font-size: 7.5pt;
+  color: #9ca3af;
+  padding: 0;
+  vertical-align: top;
+}
+
+.report-footer .footer-right {
+  text-align: right;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="cover-rule-top"></div>
+  <h1>WCAG 2.1 Contrast<br><span class="accent">Accessibility Audit</span></h1>
+  <p class="subtitle">Colour Contrast Compliance Report</p>
+  <div class="cover-rule-bottom"></div>
+
+  <table class="cover-meta">
+    <tr>
+      <td class="meta-label-cell"><span class="meta-label">Target Site</span></td>
+      <td><span class="meta-value"><<<SITE_URL>>></span></td>
+    </tr>
+    <tr>
+      <td class="meta-label-cell"><span class="meta-label">Report Date</span></td>
+      <td><span class="meta-value"><<<REPORT_DATE>>></span></td>
+    </tr>
+    <tr>
+      <td class="meta-label-cell"><span class="meta-label">Standard</span></td>
+      <td><span class="meta-value">WCAG 2.1 / WCAG 2.2</span></td>
+    </tr>
+    <tr>
+      <td class="meta-label-cell"><span class="meta-label">Audit Tool</span></td>
+      <td><span class="meta-value">WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill</span></td>
+    </tr>
+    <tr>
+      <td class="meta-label-cell"><span class="meta-label">Audit Tool URL</span></td>
+      <td><span class="meta-value">https://openaiskillpackage.com/</span></td>
+    </tr>
+  </table>
+
+  <div class="cover-badge">
+    <strong>EAA Notice &mdash;</strong> The European Accessibility Act mandates WCAG 2.1 Level AA
+    compliance for commercial websites and apps operating in EU member states, with enforcement
+    from <strong>28 June 2025</strong> under EN&nbsp;301&nbsp;549&nbsp;v3.2.1.
+    Failures identified in this report constitute potential non-compliance.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SECTION 1 ═══ -->
+<h2>1. Executive Summary</h2>
+
+<<<EXECUTIVE_SUMMARY>>>
+
+<table class="summary-grid">
+  <tr>
+    <td class="box-total">
+      <span class="summary-num"><<<TOTAL_PAIRS>>></span>
+      <span class="summary-lbl">Pairs Tested</span>
+    </td>
+    <td class="spacer"></td>
+    <td class="box-pass">
+      <span class="summary-num"><<<PASS_COUNT>>></span>
+      <span class="summary-lbl">AA Pass</span>
+    </td>
+    <td class="spacer"></td>
+    <td class="box-fail">
+      <span class="summary-num"><<<FAIL_COUNT>>></span>
+      <span class="summary-lbl">AA Fail</span>
+    </td>
+    <td class="spacer"></td>
+    <td class="box-warn">
+      <span class="summary-num"><<<AAA_FAIL_COUNT>>></span>
+      <span class="summary-lbl">AAA Fail</span>
+    </td>
+  </tr>
+</table>
+
+<<<EXECUTIVE_DETAIL>>>
+
+<!-- ═══════════════════════════════════════════ SECTION 2 ═══ -->
+<h2>2. Test Methodology</h2>
+
+<div class="skill-box">
+  <div class="skill-box-heading">Audit Skill Package</div>
+  <div class="skill-name">WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill</div>
+  <div class="skill-meta">
+    <span class="skill-meta-row"><strong>Version:</strong> <<<SKILL_VERSION>>> &nbsp;&nbsp; <strong>Type:</strong> Open Procedural AI Skill &nbsp;&nbsp; <strong>Author:</strong> Anthony Harrison</span>
+    <span class="skill-meta-row"><strong>Standard:</strong> WCAG 2.1 / WCAG 2.2 &middot; EN 301 549 v3.2.1 &nbsp;&nbsp; <strong>Licence:</strong> MIT</span>
+  </div>
+  <div class="skill-availability">
+    This skill is freely available from
+    <strong>https://openaiskillpackage.com/</strong> &mdash; download
+    <code>WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill</code> to reproduce this audit
+    against any website or to run your own contrast assessments. The package includes
+    the contrast calculator, this report template, full test vectors, and procedural
+    instructions for use with any AI agent.
+  </div>
+</div>
+
+<p>The audit was executed using the <strong>WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill</strong>
+package &mdash; an open procedural AI skill that encapsulates a Python-based contrast ratio
+calculator conforming to the WCAG 2.1 relative luminance formula. The skill is self-contained
+and reproducible: all logic, test vectors, input schemas, and this report template are bundled
+within the <code>.aiskill</code> archive and produce deterministic output for a given set of
+colour pairs.</p>
+
+<h3>Procedure</h3>
+
+<table class="method-steps">
+  <tr>
+    <td class="step-num-cell"><span class="step-num">1</span></td>
+    <td><strong>Page acquisition.</strong> The target page (<code><<<SITE_URL>>></code>) was
+    saved locally as a complete HTML document with its accompanying stylesheet asset directory.
+    No live network requests were made during the audit.</td>
+  </tr>
+  <tr>
+    <td class="step-num-cell"><span class="step-num">2</span></td>
+    <td><strong>Colour extraction.</strong> Non-minified stylesheet(s) were parsed to enumerate
+    <code>color</code>, <code>background-color</code>, and <code>background</code> declarations:
+    <code><<<CSS_FILES_AUDITED>>></code>. Minified CSS files (<code>*.min.css</code>) were
+    excluded from this analysis on the presumption that they represent third-party framework
+    dependencies rather than site-authored design code &mdash; see <em>Scope &amp; Limitations</em>
+    below. Colours were normalised to six-digit uppercase hex notation. Pairs were identified
+    from rules that co-declare both a foreground and background colour, supplemented by implicit
+    text-on-white pairings for colours without an explicit background context.</td>
+  </tr>
+  <tr>
+    <td class="step-num-cell"><span class="step-num">3</span></td>
+    <td><strong>Pair construction.</strong> <<<PAIR_COUNT>>> foreground/background colour pairs
+    were derived, covering navigation, body text, interactive elements, accent colours, and
+    status indicators present in the audited stylesheet(s).</td>
+  </tr>
+  <tr>
+    <td class="step-num-cell"><span class="step-num">4</span></td>
+    <td><strong>Contrast calculation.</strong> Each pair was evaluated using
+    <code>assets/scripts/wcag_contrast.py</code>. Relative luminance is computed per the sRGB
+    gamma-correction formula
+    (<em>L&nbsp;=&nbsp;0.2126&middot;R&nbsp;+&nbsp;0.7152&middot;G&nbsp;+&nbsp;0.0722&middot;B</em>);
+    contrast ratio as
+    <em>(L<sub>lighter</sub>&nbsp;+&nbsp;0.05)&nbsp;/&nbsp;(L<sub>darker</sub>&nbsp;+&nbsp;0.05)</em>.</td>
+  </tr>
+  <tr>
+    <td class="step-num-cell"><span class="step-num">5</span></td>
+    <td><strong>Threshold evaluation.</strong> Results were assessed against WCAG 2.1 AA
+    (4.5:1 normal text; 3:1 large text &ge;&nbsp;18pt or 14pt bold) and AAA
+    (7:1 normal; 4.5:1 large) thresholds. Failures at AA level constitute EAA non-compliance.</td>
+  </tr>
+</table>
+
+<div class="scope-box">
+  <div class="scope-heading">Scope &amp; Limitations &mdash; CSS File Coverage</div>
+
+  <table class="scope-table">
+    <tr>
+      <th style="width:14%;">Status</th>
+      <th style="width:34%;">File</th>
+      <th>Classification &amp; Rationale</th>
+    </tr>
+    <<<SCOPE_FILE_ROWS>>>
+  </table>
+
+  <div class="scope-note">
+    <p>The classifications above are based on filename pattern only.
+    <strong>Minified files (<code>*.min.css</code>) are presumed to be third-party
+    framework dependencies</strong> (e.g. Bootstrap, Tailwind, Font Awesome) whose
+    component colour palette greatly exceeds what is rendered on any given page.
+    Including them would produce hundreds or thousands of pairs from unused utility
+    classes, obscuring the site's actual design palette and making the results
+    unactionable.</p>
+    <p>However, some development pipelines minify the site's own CSS files.
+    If any excluded file above was authored by the site's development team and
+    contains design-specific colour declarations, those colours fall
+    <strong>outside the scope of this audit</strong> and any contrast failures
+    within them are not reported here.</p>
+  </div>
+
+  <div class="scope-accountability">
+    <strong>Reader responsibility:</strong> The project manager, client representative,
+    or other commissioning party should verify whether the excluded files listed above
+    are genuinely third-party dependencies before treating this report as a complete
+    assessment. If any excluded file is site-authored, a supplementary audit should
+    be commissioned &mdash; each excluded row above provides the exact instruction to
+    give your AI agent. Where no such verification is carried out and this report is
+    accepted as-is, that acceptance constitutes acknowledgement of this scope limitation.
+    <br><br>
+    If the original saved HTML file is no longer available, re-obtain it by visiting
+    <strong><<<SITE_URL>>></strong> in a browser and saving the page
+    (Ctrl+S on Windows / Cmd+S on Mac), then instruct your AI agent to run the
+    audit against the saved file.
+  </div>
+</div>
+
+<div class="compliance-box">
+  <div class="compliance-heading">Regulatory Context &mdash; European Accessibility Act</div>
+  <p>EAA Directive 2019/882/EU requires that commercial websites and mobile applications meet
+  <strong>WCAG 2.1 Level AA</strong> as a minimum. This is implemented in the UK via the Equality
+  Act 2010 and in EU member states via national transposing legislation. Enforcement commenced
+  <strong>28 June 2025</strong>. All AA failures in this report are potential EAA
+  non-compliances under EN&nbsp;301&nbsp;549&nbsp;v3.2.1 criterion 9.1.4.3.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ SECTION 3 ═══ -->
+<h2>3. Full Results</h2>
+<p>All <<<TOTAL_PAIRS>>> colour pairs tested are listed below. Ratios are expressed as X:1.
+AA Normal requires &ge;&nbsp;4.5:1; AA Large requires &ge;&nbsp;3:1;
+AAA Normal requires &ge;&nbsp;7:1; AAA Large requires &ge;&nbsp;4.5:1.
+Rows highlighted in red indicate AA failures.</p>
+
+<table class="results">
+  <thead>
+    <tr>
+      <th style="width:22%;">Context / Selector</th>
+      <th style="width:16%;">Foreground</th>
+      <th style="width:16%;">Background</th>
+      <th style="width:9%;">Ratio</th>
+      <th style="width:9%;">AA Norm</th>
+      <th style="width:9%;">AA Large</th>
+      <th style="width:9%;">AAA Norm</th>
+      <th style="width:10%;">AAA Large</th>
+    </tr>
+  </thead>
+  <tbody>
+    <<<RESULTS_TABLE_ROWS>>>
+  </tbody>
+</table>
+
+<!-- ═══════════════════════════════════════════ SECTION 4 ═══ -->
+<h2>4. Failure Analysis &amp; Remediation</h2>
+
+<<<FAIL_INTRO>>>
+
+<<<FAIL_CARDS>>>
+
+<!-- ═══════════════════════════════════════════ SECTION 5 ═══ -->
+<h2>5. References</h2>
+<ul>
+  <li>WCAG 2.1 &mdash; Web Content Accessibility Guidelines: <em>https://www.w3.org/TR/WCAG21/</em></li>
+  <li>WCAG 2.2 &mdash; Updated Guidelines: <em>https://www.w3.org/TR/WCAG22/</em></li>
+  <li>SC&nbsp;1.4.3 &mdash; Contrast (Minimum): <em>https://www.w3.org/TR/WCAG21/#contrast-minimum</em></li>
+  <li>SC&nbsp;1.4.6 &mdash; Contrast (Enhanced): <em>https://www.w3.org/TR/WCAG21/#contrast-enhanced</em></li>
+  <li>EN 301 549 v3.2.1 &mdash; European harmonised accessibility standard</li>
+  <li>EAA Directive 2019/882/EU &mdash; European Accessibility Act</li>
+  <li>WebAIM Contrast Checker: <em>https://webaim.org/resources/contrastchecker/</em></li>
+  <li>Audit tool: <strong>WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill</strong>
+      &mdash; freely available from <strong>https://openaiskillpackage.com/</strong></li>
+</ul>
+
+<div class="report-footer">
+  <table>
+    <tr>
+      <td>Generated by WCAG-CONTRAST-AUDIT-<<<SKILL_VERSION>>>.aiskill
+          &middot; <em>https://openaiskillpackage.com/</em>
+          &middot; <<<REPORT_DATE>>></td>
+      <td class="footer-right">Target: <<<SITE_URL>>></td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

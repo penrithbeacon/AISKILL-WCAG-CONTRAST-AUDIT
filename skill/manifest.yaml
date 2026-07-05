@@ -1,8 +1,10 @@
 name: WCAG Contrast Audit
 id: com.widgetcontextprotocol.wcag-contrast-audit
 uuid: 18a27cc7-932b-433a-9a3b-b29fe866a84e
-version: 1.0.0
-description: Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios and generates a professional PDF report from a saved HTML page in one command.
+version: 1.1.4
+description: >
+  Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios
+  and generates a professional PDF report from a saved HTML page in one command.
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
@@ -12,11 +14,60 @@ capabilities:
   - filesystem.read
   - filesystem.write
   - process.exec
+permissions:
+  filesystem.read:
+    paths:
+      - "*.html"
+      - "*.css"
+  filesystem.write:
+    paths:
+      - "*.html"
+      - "*.pdf"
 homepage: https://openaiskillpackage.com/
 repository: https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT
-tags: [wcag, contrast, audit]
+tags:
+  - accessibility
+  - wcag
+  - contrast
+  - audit
+  - report
+  - pdf
+  - eaa
 type: analytical
 changelog:
+  - version: 1.1.4
+    changes:
+      - Fix cover page meta layout — each field now on its own row (label left, value right)
+      - Add Audit Tool URL as a dedicated cover field
+      - Tool name displayed as single unbroken line (WCAG-CONTRAST-AUDIT-x.x.x.aiskill)
+  - version: 1.1.3
+    changes:
+      - Fix results table overflow in PDF — add table-layout:fixed so column percentages are strictly respected
+      - Add word-break and overflow:hidden to body cells to prevent long selectors bursting columns
+      - Add browser-only body margins via @media screen so HTML report renders with gutters in a browser
+  - version: 1.1.2
+    changes:
+      - Fix implicit pair explosion on large CSS files (6000+ lines)
+      - Remove dominant-background heuristic; implicit pairs now only tested against white
+      - Reduces rwas.wales from 491 spurious pairs to 38 credible pairs
+      - Explicit co-declared pairs (fg+bg in same rule) are unaffected
+  - version: 1.1.1
+    changes:
+      - Per-file include control via --include-css FILENAME [FILENAME ...]
+      - Per-excluded-file AI re-run instruction in Scope & Limitations table
+      - Re-download instruction in accountability panel (Ctrl+S / Cmd+S workflow)
+      - Exclude *.min.css files by default; --include-min-css to include all
+      - Reports skipped files transparently in console output
+  - version: 1.1.0
+    changes:
+      - Added generate_report.py — one-command end-to-end report generator
+      - Added assets/templates/report-template.html — portable HTML report template
+      - Template CSS uses plain hex colours only (no color-mix(), no gradients)
+      - Compatible with WeasyPrint, wkhtmltopdf, and Puppeteer PDF renderers
+      - Auto-extracts site domain, discovers CSS files, and pairs colours from CSS
+      - Outputs WCAG-Contrast-Audit-Report-{domain}-{YYYY-MM-DD}.html + .pdf
+      - Updated SKILL.md with quick-start workflow and template token reference
+      - Skill reference URL added to all report output (https://openaiskillpackage.com/)
   - version: 1.0.0
     changes:
-      - Initial release
+      - Initial release with contrast calculator and manual audit procedure
