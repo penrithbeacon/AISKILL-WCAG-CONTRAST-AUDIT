@@ -9,6 +9,12 @@ only the version history itself, as retained in the shipped manifest.
 
 ---
 
+## [2.0.0]
+
+### Changed
+- **BREAKING:** `CARD.md` is now a third REQUIRED package file, alongside `manifest.yaml` and
+  `SKILL.md` — generated deterministically by `build_card.py` from `manifest.yaml`
+
 ## [1.1.4]
 
 ### Fixed
