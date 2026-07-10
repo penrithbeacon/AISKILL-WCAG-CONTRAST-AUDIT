@@ -1,7 +1,7 @@
 name: WCAG Contrast Audit
 id: com.widgetcontextprotocol.wcag-contrast-audit
 uuid: 18a27cc7-932b-433a-9a3b-b29fe866a84e
-version: 2.0.0
+version: 2.0.1
 description: >
   Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios
   and generates a professional PDF report from a saved HTML page in one command.
@@ -35,6 +35,9 @@ tags:
   - eaa
 type: analytical
 changelog:
+  - version: 2.0.1
+    changes:
+      - Bundled skill/LICENSE.txt (MIT) — conforms to the v2.1.0 .aiskill spec's optional bundled license file
   - version: 2.0.0
     changes:
       - "BREAKING: CARD.md is now a third REQUIRED package file, generated deterministically by build_card.py from manifest.yaml — packages built before this version no longer conform"

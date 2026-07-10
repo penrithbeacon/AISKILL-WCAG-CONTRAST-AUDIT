@@ -9,6 +9,12 @@ only the version history itself, as retained in the shipped manifest.
 
 ---
 
+## [2.0.1] — 2026-07-10
+
+### Added
+- Bundled `skill/LICENSE.txt` (MIT) — conforms to the v2.1.0 `.aiskill` spec's
+  optional bundled license file
+
 ## [2.0.0]
 
 ### Changed
