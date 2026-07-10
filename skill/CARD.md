@@ -2,7 +2,7 @@
 
 Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios and generates a professional PDF report from a saved HTML page in one command.
 
-**Version:** 2.0.1
+**Version:** 2.0.2
 **Author:** Anthony Harrison
 **License:** MIT
 **Package ID:** `com.widgetcontextprotocol.wcag-contrast-audit`

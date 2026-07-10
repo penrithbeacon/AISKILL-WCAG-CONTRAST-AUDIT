@@ -9,6 +9,14 @@ only the version history itself, as retained in the shipped manifest.
 
 ---
 
+## [2.0.2] — 2026-07-10
+
+### Added
+- **BREAKING:** `SYSTEM.md` is now a fourth required package file
+  (`.aiskill` spec v2.2.0) — an invariant, versioned verification protocol
+  every AI agent must follow before executing `SKILL.md`
+- New required manifest field `system_protocol_version`
+
 ## [2.0.1] — 2026-07-10
 
 ### Added

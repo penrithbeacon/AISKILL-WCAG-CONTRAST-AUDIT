@@ -1,13 +1,14 @@
 name: WCAG Contrast Audit
 id: com.widgetcontextprotocol.wcag-contrast-audit
 uuid: 18a27cc7-932b-433a-9a3b-b29fe866a84e
-version: 2.0.1
+version: 2.0.2
 description: >
   Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios
   and generates a professional PDF report from a saved HTML page in one command.
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
+system_protocol_version: "1.0.0"
 license: MIT
 minimum_runtime: "1.0.0"
 capabilities:
@@ -35,6 +36,10 @@ tags:
   - eaa
 type: analytical
 changelog:
+  - version: 2.0.2
+    changes:
+      - "BREAKING: SYSTEM.md is now a fourth REQUIRED package file (.aiskill spec v2.2.0) — an invariant, versioned verification protocol every AI agent must follow before executing SKILL.md — packages built before this version lack it and no longer conform"
+      - "New required manifest field system_protocol_version, declaring which SYSTEM.md version this package ships"
   - version: 2.0.1
     changes:
       - Bundled skill/LICENSE.txt (MIT) — conforms to the v2.1.0 .aiskill spec's optional bundled license file
