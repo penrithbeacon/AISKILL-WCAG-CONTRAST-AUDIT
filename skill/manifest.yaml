@@ -1,10 +1,32 @@
 name: WCAG Contrast Audit
 id: com.widgetcontextprotocol.wcag-contrast-audit
 uuid: 18a27cc7-932b-433a-9a3b-b29fe866a84e
-version: 2.0.2
+version: 2.0.3
 description: >
   Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios
   and generates a professional PDF report from a saved HTML page in one command.
+synopsis: |
+  Audits every foreground/background colour pair on a saved web page against
+  WCAG 2.1/2.2 AA and AAA contrast ratio thresholds -- AA (4.5:1 normal text,
+  3.0:1 large text) and AAA (7.0:1 / 4.5:1) -- and produces a professional,
+  deterministic HTML report plus a derived PDF, extracting the page's linked
+  CSS and identifying colour pairs automatically rather than requiring them
+  to be listed by hand. Minified framework CSS is excluded by default, since
+  auditing every colour a framework declares produces thousands of phantom
+  failures rather than a usable result.
+
+  Reach for this whenever WCAG contrast compliance needs to be demonstrated,
+  documented, or fixed for a real site -- including EN 301 549 / EAA
+  (European Accessibility Act) audits, which reference the same SC 1.4.3 and
+  SC 1.4.6 success criteria this skill checks against. A manual CSV-driven
+  path is also available for auditing a specific list of colour pairs outside
+  a full page context.
+
+  Ships with a pytest suite covering the contrast-ratio calculator itself,
+  and the HTML/PDF report is generated from the same fixed template every
+  run, so the same input page always produces the same report. Carries the
+  same SYSTEM.md external-registry verification as every other package in
+  this ecosystem.
 author: Anthony Harrison
 authorEmail: anthony@harrisonofthenorth.com
 entry: SKILL.md
@@ -36,6 +58,10 @@ tags:
   - eaa
 type: analytical
 changelog:
+  - version: 2.0.3
+    changes:
+      - "BREAKING (.aiskill spec v2.3.0): new required manifest field synopsis — a multi-paragraph, hand-authored expansion of description, feeding both README.md's opening and CARD.md's rendering"
+      - "Unified README.md: repo-root and skill/README.md are now byte-identical (previously diverged), and both fixed a stale v1.1.4 version reference left over since the 2.0.x version bumps"
   - version: 2.0.2
     changes:
       - "BREAKING: SYSTEM.md is now a fourth REQUIRED package file (.aiskill spec v2.2.0) — an invariant, versioned verification protocol every AI agent must follow before executing SKILL.md — packages built before this version lack it and no longer conform"

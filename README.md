@@ -2,9 +2,15 @@
 
 **WCAG Contrast Audit** — Audits foreground/background colour pairs against WCAG 2.1/2.2 AA and AAA contrast ratios and generates a professional PDF report from a saved HTML page in one command.
 
+Audits every foreground/background colour pair on a saved web page against WCAG 2.1/2.2 AA and AAA contrast ratio thresholds — AA (4.5:1 normal text, 3.0:1 large text) and AAA (7.0:1 / 4.5:1) — and produces a professional, deterministic HTML report plus a derived PDF, extracting the page's linked CSS and identifying colour pairs automatically rather than requiring them to be listed by hand. Minified framework CSS is excluded by default, since auditing every colour a framework declares produces thousands of phantom failures rather than a usable result.
+
+Reach for this whenever WCAG contrast compliance needs to be demonstrated, documented, or fixed for a real site — including EN 301 549 / EAA (European Accessibility Act) audits, which reference the same SC 1.4.3 and SC 1.4.6 success criteria this skill checks against. A manual CSV-driven path is also available for auditing a specific list of colour pairs outside a full page context.
+
+Ships with a pytest suite covering the contrast-ratio calculator itself, and the HTML/PDF report is generated from the same fixed template every run, so the same input page always produces the same report. Carries the same SYSTEM.md external-registry verification as every other package in this ecosystem.
+
 | | |
 |---|---|
-| Version | `1.1.4` |
+| Version | `2.0.3` |
 | License | `MIT` |
 | Author | Anthony Harrison |
 | Homepage | https://openaiskillpackage.com/ |
@@ -45,11 +51,11 @@ Before using this skill, ensure the following are available in the AI agent's en
 
 ## Quick Start
 
-1. Download `WCAG-CONTRAST-AUDIT-1.1.4.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT/releases) page
+1. Download `WCAG-CONTRAST-AUDIT-2.0.3.aiskill` from the [Releases](https://github.com/PenrithBeacon/AISKILL-WCAG-CONTRAST-AUDIT/releases) page
 2. Give your AI agent the following prompt:
 
 ```
-Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-1.1.4.aiskill,
+Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-2.0.3.aiskill,
 [describe what you want the skill to do, e.g. 'audit the contrast of /path/to/saved-page.html']
 ```
 
@@ -58,10 +64,10 @@ Using the Skill Package at /path/to/WCAG-CONTRAST-AUDIT-1.1.4.aiskill,
 ## Skill Archive Contents
 
 ```
-WCAG-CONTRAST-AUDIT-1.1.4.aiskill  (ZIP archive)
+WCAG-CONTRAST-AUDIT-2.0.3.aiskill  (ZIP archive)
 ├── manifest.yaml          # identity & metadata
 ├── SKILL.md               # AI entry point — execution instructions
-├── README.md              # this file (skill-level)
+├── README.md              # this file — byte-identical to the repo-root copy
 ├── CHANGELOG.md           # version history
 ├── checksums.yaml         # SHA-256 integrity hashes
 ├── assets/

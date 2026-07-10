@@ -9,6 +9,34 @@ only the version history itself, as retained in the shipped manifest.
 
 ---
 
+## [2.0.3] — 2026-07-10
+
+### Added
+- **BREAKING** (`.aiskill` spec v2.3.0): new required manifest field
+  `synopsis` — a multi-paragraph, hand-authored expansion of `description`,
+  feeding both `README.md`'s opening and `CARD.md`'s rendering
+
+### Fixed
+- Repo-root `README.md` and `skill/README.md` had diverged and both still
+  referenced a stale `v1.1.4` — unified into one byte-identical README,
+  version references corrected
+- Caught this file up to match `skill/CHANGELOG.md` — the `2.0.1`/`2.0.2`
+  entries had never been added here
+
+## [2.0.2] — 2026-07-10
+
+### Added
+- **BREAKING:** `SYSTEM.md` is now a fourth required package file
+  (`.aiskill` spec v2.2.0) — an invariant, versioned verification protocol
+  every AI agent must follow before executing `SKILL.md`
+- New required manifest field `system_protocol_version`
+
+## [2.0.1] — 2026-07-10
+
+### Added
+- Bundled `skill/LICENSE.txt` (MIT) — conforms to the v2.1.0 `.aiskill` spec's
+  optional bundled license file
+
 ## [2.0.0]
 
 ### Changed
